@@ -1,0 +1,78 @@
+---
+title: "Statistical Power Many Labs Projects"
+author: "Robbie C.M. van Aert"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+
+load("res.RData")
+```
+
+This report is based on the code "power_ml_2.R" ["power_ml_2.R"](NOG TOEVOEGEN) for computing the statistical power for Many Labs projects. The $I^2$-statistic (i.e., proportion of total variance in a meta-analysis that can be attributed to between-study variance in true effect size) and statistical power for testing the null-hypothesis of no effect and the null-hypothesis of homogeneous true effect size (*Q*-test) are presented below. $\rho$ refers to the intra-class correlation and $\mu$ is the true effect size. Statistical power above the threshold of 0.8 is colored green and below 0.8 is colored red.
+
+<div style="margin-top:50px;">
+
+### $I^2$-statistic
+
+```{r I2}
+tab <- colMeans(res$mean_I2)
+
+kable(t(tab), escape = FALSE, digits = 1) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE) %>%
+  add_header_above(c("$\\rho$" = ncol(t(tab))))
+  
+
+
+```
+
+</div>
+
+<div style="margin-top:50px;">
+
+### Statistical power for testing null-hypothesis of no effect
+
+```{r pow_mu}
+tab <- cbind(rownames(res$pow_mu), round(res$pow_mu, 3))
+rownames(tab) <- rep("$\\mu$", nrow(tab))
+
+tab[ ,2:ncol(tab)] <- cell_spec(tab[ ,2:ncol(tab)], "html", 
+                                color = ifelse(as.numeric(tab[ ,2:ncol(tab)]) > 0.8, 
+                                               "green", "red"))
+
+kable(tab, escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE) %>%
+  add_header_above(c(" " = 2, "$\\rho$" = ncol(tab)-1)) %>%
+  column_spec(2, bold = TRUE) %>%
+  collapse_rows(columns = 1, latex_hline = "major")
+ 
+```
+
+</div>
+
+<div style="margin-top:50px;">
+
+### Statistical power for testing whether true effect size is homogeneous
+
+```{r pow_tau2}
+tab <- cbind(rownames(res$pow_tau2), round(res$pow_tau2, 3))
+rownames(tab) <- rep("$\\mu$", nrow(tab))
+
+tab[ ,2:ncol(tab)] <- cell_spec(tab[ ,2:ncol(tab)], "html", 
+                                color = ifelse(as.numeric(tab[ ,2:ncol(tab)]) > 0.8, 
+                                               "green", "red"))
+
+kable(tab, escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE) %>%
+  add_header_above(c(" " = 2, "$\\rho$" = ncol(tab)-1)) %>%
+  column_spec(2, bold = TRUE) %>%
+  collapse_rows(columns = 1, latex_hline = "major")
+ 
+```
+
+</div>
