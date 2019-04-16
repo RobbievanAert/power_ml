@@ -11,7 +11,7 @@ library(kableExtra)
 load("res.RData")
 ```
 
-This report is based on the code "power_ml_2.R" ["power_ml_2.R"](NOG TOEVOEGEN) for computing the statistical power for Many Labs projects. The $I^2$-statistic (i.e., proportion of total variance in a meta-analysis that can be attributed to between-study variance in true effect size) and statistical power for testing the null-hypothesis of no effect and the null-hypothesis of homogeneous true effect size (*Q*-test) are presented below. $\rho$ refers to the intra-class correlation and $\mu$ is the true effect size. Statistical power above the threshold of 0.8 is colored green and below 0.8 is colored red.
+This report is based on the code ["power_ml.R"](https://github.com/RobbievanAert/power_ml/blob/master/power_ml.R) for computing the statistical power for Many Labs projects. The $I^2$-statistic (i.e., proportion of total variance in a meta-analysis that can be attributed to between-study variance in true effect size) and statistical power for testing the null-hypothesis of no effect and the null-hypothesis of homogeneous true effect size (*Q*-test) are presented below. $\rho$ refers to the intra-class correlation and $\mu$ is the true effect size. Statistical power above the threshold of 0.8 is colored green and below 0.8 is colored red.
 
 <div style="margin-top:50px;">
 

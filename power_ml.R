@@ -144,7 +144,7 @@ get_power <- function(es, n1i, n2i, ni, rhos, mus, alpha_mu = 0.05, tail = "two"
   close(pb) # Close progress bar
   
   if (report == TRUE)
-  { # If the user want to see the report
+  { # If the user wants to see the report
     res <- list(pow_mu = pow_mu, pow_tau2 = pow_tau2, mean_I2 = mean_I2)
     save(res, file = "res.RData") # Save results to working directory
     rmarkdown::render("report_power_ml.Rmd") # Create report
