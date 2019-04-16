@@ -1,7 +1,3 @@
----
-output: github_document
----
-
 Function to assess the statistical power for testing the null-hypothesis of no effect and 
 the null-hypothesis of homogeneous true effect size of a Many Labs project. Monte-Carlo 
 simulations are used for computing the statistical power.
@@ -30,7 +26,7 @@ The function has the following arguments:
 - tau2_max = upper bound for root-finding algorithm for estimating tau2 (default = 5)
 - report = whether you want to get a HTML report of the results (in order to create the report two files will be saved to the working directory of your computer, default = TRUE)
 
-```{r}
+``` r
 ### Example standardized mean difference
 rhos <- c(0, 0.1, 0.25) # Intra-class correlations
 mus <- c(0, 0.5, 1) # True effect size
